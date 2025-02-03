@@ -18,19 +18,19 @@ Property tax on Mercer Island: 0.61% per year
 """)
             
 # Add text inputs for buyerCostRatio, sellerCostRatio, buyerPrice, and sellPrice
-buyer_cost_ratio = st.number_input("Buyer Cost Ratio (%)", value=5) / 100
-seller_cost_ratio = st.number_input("Seller Cost Ratio (%)", value=7) / 100
+buyer_cost_ratio = st.number_input("Buyer Cost Ratio (%)", value=5.0) / 100
+seller_cost_ratio = st.number_input("Seller Cost Ratio (%)", value=7.0) / 100
 buyer_price = st.number_input("Buyer Price (10k)", value=300) * 10000
 
 down_payment_ratio = st.number_input("Down Payment Ratio (%)", value=20) / 100
 
-stock_increase_ratio = st.number_input("Stock Increase Ratio (%)", value=7) / 100
+stock_increase_ratio = st.number_input("Stock Increase Ratio (%)", value=7.0) / 100
 
-house_increase_ratio = st.number_input("House Increase Ratio (%)", value=5) /100
+house_increase_ratio = st.number_input("House Increase Ratio (%)", value=7.0) /100
 
 property_tax_ratio = st.number_input("Property Tax Ratio (%)", value=0.61) / 100
 
-interest_rate = st.number_input("Mortgage Interest Rate (%)", value=7) / 100
+interest_rate = st.number_input("Mortgage Interest Rate (%)", value=6.5) / 100
 
 
 down_payment = buyer_price * down_payment_ratio 
@@ -111,6 +111,7 @@ def calculate_amortization_schedule(principal, annual_interest_rate, years, buye
             "Stock Gain": stock_investment - accumulated_investment,
             "House Diff": house_price - buyer_price,
             "House Gain": house_gain,
+            "House Gain - Stock Gain": house_gain - (stock_investment - accumulated_investment),
         })
 
         if (month > 0 and month % 12 == 0):
